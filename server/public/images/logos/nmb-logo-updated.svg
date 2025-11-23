@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120">
+  <!-- Background -->
+  <rect width="300" height="120" fill="white"/>
+  
+  <!-- Main NMB logo container -->
+  <g transform="translate(30, 20)">
+    <!-- NMB background -->
+    <rect x="0" y="0" width="240" height="55" fill="#0066CC" rx="10"/>
+    <rect x="2" y="2" width="236" height="51" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" rx="8"/>
+    
+    <!-- NMB initials -->
+    <g transform="translate(20, 12)">
+      <!-- N -->
+      <rect x="0" y="0" width="4" height="30" fill="white"/>
+      <rect x="0" y="0" width="15" height="4" fill="white"/>
+      <rect x="11" y="0" width="4" height="30" fill="white"/>
+      <rect x="4" y="12" width="7" height="4" fill="white"/>
+      
+      <!-- M -->
+      <g transform="translate(25, 0)">
+        <rect x="0" y="0" width="4" height="30" fill="white"/>
+        <rect x="13" y="0" width="4" height="30" fill="white"/>
+        <rect x="4" y="0" width="9" height="4" fill="white"/>
+        <rect x="6" y="4" width="5" height="4" fill="white"/>
+      </g>
+      
+      <!-- B -->
+      <g transform="translate(50, 0)">
+        <rect x="0" y="0" width="4" height="30" fill="white"/>
+        <rect x="4" y="0" width="10" height="4" fill="white"/>
+        <rect x="4" y="13" width="8" height="4" fill="white"/>
+        <rect x="4" y="26" width="10" height="4" fill="white"/>
+        <rect x="14" y="4" width="4" height="9" fill="white"/>
+        <rect x="12" y="17" width="4" height="9" fill="white"/>
+      </g>
+    </g>
+    
+    <!-- BANK text -->
+    <g transform="translate(130, 25)">
+      <text x="0" y="0" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" 
+            fill="white">BANK</text>
+    </g>
+    
+    <!-- Decorative elements -->
+    <g transform="translate(200, 10)">
+      <rect x="0" y="0" width="25" height="3" fill="rgba(255,255,255,0.6)" rx="1"/>
+      <rect x="0" y="7" width="20" height="3" fill="rgba(255,255,255,0.4)" rx="1"/>
+      <rect x="0" y="14" width="15" height="3" fill="rgba(255,255,255,0.3)" rx="1"/>
+    </g>
+  </g>
+  
+  <!-- Tagline -->
+  <g transform="translate(30, 85)">
+    <text x="120" y="0" font-family="Arial, sans-serif" font-size="12" font-weight="normal" 
+          fill="#666" text-anchor="middle">National Microfinance Bank</text>
+    <text x="120" y="15" font-family="Arial, sans-serif" font-size="10" font-weight="normal" 
+          fill="#999" text-anchor="middle">Your Partner in Progress</text>
+  </g>
+  
+  <!-- Banking icons -->
+  <g transform="translate(10, 40)">
+    <!-- ATM icon -->
+    <rect x="0" y="0" width="12" height="8" fill="none" stroke="#0066CC" stroke-width="1.5"/>
+    <rect x="2" y="2" width="8" height="4" fill="#E6F0FF"/>
+    <text x="6" y="9" font-family="Arial, sans-serif" font-size="6" fill="#0066CC" text-anchor="middle">ATM</text>
+  </g>
+  
+  <g transform="translate(270, 30)">
+    <!-- Mobile banking icon -->
+    <rect x="0" y="0" width="8" height="12" fill="none" stroke="#0066CC" stroke-width="1.5" rx="1"/>
+    <rect x="1" y="2" width="6" height="7" fill="#E6F0FF"/>
+    <circle cx="4" cy="10" r="0.5" fill="#0066CC"/>
+    <text x="4" y="18" font-family="Arial, sans-serif" font-size="5" fill="#0066CC" text-anchor="middle">Mobile</text>
+  </g>
+</svg>

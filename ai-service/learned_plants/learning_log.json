@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2025-08-05T15:17:25.462828",
+    "plant_name": "test_green_leaf",
+    "image_path": "ai-service/learned_plants/test_green_leaf_20250805_151722_805974b0.jpg",
+    "original_path": "test_plant.jpg"
+  },
+  {
+    "timestamp": "2025-08-05T15:19:14.868433",
+    "plant_name": "red_brown_plant",
+    "image_path": "ai-service/learned_plants/red_brown_plant_20250805_151911_ed7e91b4.jpg",
+    "original_path": "test_plant2.jpg"
+  },
+  {
+    "timestamp": "2025-08-05T15:34:53.194128",
+    "plant_name": "test_frontend_plant",
+    "image_path": "ai-service/learned_plants/test_frontend_plant_20250805_153447_805974b0.jpg",
+    "original_path": "test_plant_direct.jpg"
+  }
+]

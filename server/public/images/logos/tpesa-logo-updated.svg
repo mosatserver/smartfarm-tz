@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <rect width="200" height="200" fill="#1a1a1a" rx="20"/>
+  
+  <!-- T-PESA logo elements -->
+  <!-- Yellow ring design -->
+  <g transform="translate(100, 70)">
+    <!-- Outer ring -->
+    <path d="M -35 -10 Q -45 -25 -25 -35 Q 10 -45 45 -35 Q 55 -25 45 -10 Q 30 0 10 0 Q -15 0 -35 -10 Z" 
+          fill="#FFD700" stroke="#FFD700" stroke-width="2"/>
+    <!-- Inner ring -->
+    <path d="M -25 -5 Q -35 -20 -15 -25 Q 15 -35 35 -25 Q 45 -20 35 -5 Q 25 5 5 5 Q -15 5 -25 -5 Z" 
+          fill="none" stroke="#FFD700" stroke-width="8"/>
+  </g>
+  
+  <!-- T-PESA text -->
+  <g transform="translate(100, 140)">
+    <!-- T -->
+    <text x="-60" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#FFD700">T</text>
+    <!-- - -->
+    <text x="-35" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#FFD700">-</text>
+    <!-- PESA -->
+    <text x="-10" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#00BFFF">PESA</text>
+  </g>
+</svg>

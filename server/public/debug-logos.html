@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Debug Test - SmartFarm TZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .logo-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+        .logo-card img {
+            max-width: 120px;
+            max-height: 50px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .logo-card h4 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+        .logo-url {
+            font-family: monospace;
+            font-size: 11px;
+            color: #666;
+            word-break: break-all;
+            background: #f0f0f0;
+            padding: 4px 6px;
+            border-radius: 3px;
+            margin: 5px 0;
+        }
+        .status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.loading { background: #fff3cd; color: #856404; }
+        
+        .api-test {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .api-response {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 SmartFarm TZ - Logo Debug Test</h1>
+        <p>This page will help diagnose why logos aren't displaying in your frontend application.</p>
+        
+        <!-- Direct Logo Test Section -->
+        <div class="test-section">
+            <h2>📸 Direct Logo File Test</h2>
+            <p>Testing direct access to logo files via static file serving:</p>
+            
+            <div class="logo-grid" id="directLogoGrid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- API Test Section -->
+        <div class="test-section">
+            <h2>🔌 API Payment Providers Test</h2>
+            <div class="api-test">
+                <p><strong>Note:</strong> This test requires authentication. You'll need to provide a valid JWT token.</p>
+                <label>
+                    Auth Token: 
+                    <input type="text" id="authToken" placeholder="Bearer your-jwt-token-here" style="width: 400px; padding: 4px;">
+                </label>
+                <button class="test-button" onclick="testPaymentProvidersAPI()">Test API</button>
+                <button class="test-button" onclick="testWithoutAuth()">Test Without Auth</button>
+                
+                <div id="apiStatus" class="status loading" style="display:none;">Testing...</div>
+                <div id="apiResponse" class="api-response" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Network Test Section -->
+        <div class="test-section">
+            <h2>🌐 Network & CORS Test</h2>
+            <p>Testing network connectivity and CORS configuration:</p>
+            <button class="test-button" onclick="testCORS()">Test CORS</button>
+            <button class="test-button" onclick="testNetworkSpeed()">Test Network Speed</button>
+            
+            <div id="networkResults" class="api-response" style="display:none;"></div>
+        </div>
+
+        <!-- Browser Info Section -->
+        <div class="test-section">
+            <h2>🖥️ Browser & Environment Info</h2>
+            <div id="browserInfo" class="api-response"></div>
+        </div>
+    </div>
+
+    <script>
+        // Logo file names and their display names
+        const logoFiles = {
+            'mpesa-logo.svg': 'M-Pesa',
+            'tigo-logo.svg': 'Tigo Pesa',
+            'airtel-logo.svg': 'Airtel Money',
+            'halopesa-logo.svg': 'HaloPesa',
+            'tpesa-logo-updated.svg': 'T-Pesa',
+            'crdb-logo-updated.svg': 'CRDB Bank',
+            'nbc-logo-updated.svg': 'NBC Bank',
+            'nmb-logo.svg': 'NMB Bank',
+            'pesapal-logo-enhanced.svg': 'Pesapal'
+        };
+
+        // Base URL for API
+        const BASE_URL = 'http://localhost:5000';
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDirectLogoTest();
+            loadBrowserInfo();
+        });
+
+        // Test direct logo file access
+        function loadDirectLogoTest() {
+            const grid = document.getElementById('directLogoGrid');
+            
+            Object.entries(logoFiles).forEach(([filename, displayName]) => {
+                const card = document.createElement('div');
+                card.className = 'logo-card';
+                
+                const logoUrl = `${BASE_URL}/api/images/logos/${filename}`;
+                
+                card.innerHTML = `
+                    <h4>${displayName}</h4>
+                    <img src="${logoUrl}" alt="${displayName}" 
+                         onload="updateStatus(this, 'success')" 
+                         onerror="updateStatus(this, 'error')"
+                         onabort="updateStatus(this, 'error')">
+                    <div class="logo-url">${logoUrl}</div>
+                    <div class="status loading">Loading...</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Update status for logo loading
+        function updateStatus(img, status) {
+            const statusEl = img.parentElement.querySelector('.status');
+            statusEl.className = `status ${status}`;
+            
+            if (status === 'success') {
+                statusEl.textContent = '✅ Loaded';
+            } else if (status === 'error') {
+                statusEl.textContent = '❌ Failed to load';
+                console.error('Failed to load logo:', img.src);
+            }
+        }
+
+        // Test Payment Providers API
+        function testPaymentProvidersAPI() {
+            const token = document.getElementById('authToken').value;
+            const statusEl = document.getElementById('apiStatus');
+            const responseEl = document.getElementById('apiResponse');
+            
+            statusEl.style.display = 'block';
+            statusEl.className = 'status loading';
+            statusEl.textContent = 'Testing API...';
+            responseEl.style.display = 'none';
+            
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+            
+            if (token) {
+                headers['Authorization'] = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+            }
+            
+            fetch(`${BASE_URL}/api/marketplace/payment-providers`, {
+                method: 'GET',
+                headers: headers
+            })
+            .then(response => {
+                console.log('API Response status:', response.status);
+                return response.text().then(text => {
+                    return { status: response.status, text: text, ok: response.ok };
+                });
+            })
+            .then(result => {
+                responseEl.style.display = 'block';
+                responseEl.textContent = `Status: ${result.status}\n\nResponse:\n${result.text}`;
+                
+                if (result.ok) {
+                    statusEl.className = 'status success';
+                    statusEl.textContent = '✅ API Working';
+                    
+                    // Try to parse and display provider logos
+                    try {
+                        const data = JSON.parse(result.text);
+                        if (data.success && data.data) {
+                            displayProviderLogos(data.data);
+                        }
+                    } catch (e) {
+                        console.error('Error parsing API response:', e);
+                    }
+                } else {
+                    statusEl.className = 'status error';
+                    statusEl.textContent = `❌ API Error (${result.status})`;
+                }
+            })
+            .catch(error => {
+                console.error('API Error:', error);
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Network Error';
+                responseEl.style.display = 'block';
+                responseEl.textContent = `Error: ${error.message}`;
+            });
+        }
+
+        // Test without authentication
+        function testWithoutAuth() {
+            document.getElementById('authToken').value = '';
+            testPaymentProvidersAPI();
+        }
+
+        // Display provider logos from API response
+        function displayProviderLogos(providers) {
+            const container = document.createElement('div');
+            container.innerHTML = '<h3>📋 Payment Providers from API:</h3>';
+            
+            ['mobile', 'bank', 'gateway'].forEach(category => {
+                if (providers[category] && providers[category].length > 0) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.innerHTML = `<h4>${category.toUpperCase()}:</h4>`;
+                    
+                    const grid = document.createElement('div');
+                    grid.className = 'logo-grid';
+                    
+                    providers[category].forEach(provider => {
+                        const card = document.createElement('div');
+                        card.className = 'logo-card';
+                        card.innerHTML = `
+                            <h4>${provider.name}</h4>
+                            <img src="${provider.logo}" alt="${provider.name}" 
+                                 onload="updateStatus(this, 'success')" 
+                                 onerror="updateStatus(this, 'error')">
+                            <div class="logo-url">${provider.logo}</div>
+                            <div class="status loading">Loading...</div>
+                            <p><small>Supported: ${provider.supported ? 'Yes' : 'No'}</small></p>
+                        `;
+                        grid.appendChild(card);
+                    });
+                    
+                    categoryDiv.appendChild(grid);
+                    container.appendChild(categoryDiv);
+                }
+            });
+            
+            document.getElementById('apiResponse').appendChild(container);
+        }
+
+        // Test CORS
+        function testCORS() {
+            const resultsEl = document.getElementById('networkResults');
+            resultsEl.style.display = 'block';
+            resultsEl.textContent = 'Testing CORS...';
+            
+            fetch(`${BASE_URL}/api/test-cors`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultsEl.textContent = `CORS Test Result:\n${JSON.stringify(data, null, 2)}`;
+            })
+            .catch(error => {
+                resultsEl.textContent = `CORS Test Failed:\n${error.message}`;
+            });
+        }
+
+        // Test network speed
+        function testNetworkSpeed() {
+            const resultsEl = document.getElementById('networkResults');
+            resultsEl.style.display = 'block';
+            
+            const startTime = Date.now();
+            fetch(`${BASE_URL}/health`)
+                .then(response => response.json())
+                .then(data => {
+                    const endTime = Date.now();
+                    const responseTime = endTime - startTime;
+                    resultsEl.textContent = `Network Speed Test:\nResponse Time: ${responseTime}ms\nHealth Check: ${JSON.stringify(data, null, 2)}`;
+                })
+                .catch(error => {
+                    resultsEl.textContent = `Network Test Failed:\n${error.message}`;
+                });
+        }
+
+        // Load browser info
+        function loadBrowserInfo() {
+            const infoEl = document.getElementById('browserInfo');
+            const info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                cookieEnabled: navigator.cookieEnabled,
+                currentURL: window.location.href,
+                screenResolution: `${screen.width}x${screen.height}`,
+                windowSize: `${window.innerWidth}x${window.innerHeight}`,
+                supportsSVG: document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1"),
+                supportsWebP: false,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Test WebP support
+            const webp = new Image();
+            webp.onload = webp.onerror = function () {
+                info.supportsWebP = webp.height === 2;
+                infoEl.textContent = JSON.stringify(info, null, 2);
+            };
+            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
+    </script>
+</body>
+</html>

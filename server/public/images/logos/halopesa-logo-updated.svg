@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100">
+  <!-- Background -->
+  <rect width="280" height="100" fill="white"/>
+  
+  <!-- Main HaloPesa logo -->
+  <g transform="translate(20, 20)">
+    <!-- Halo background -->
+    <rect x="0" y="0" width="100" height="35" fill="#FF6B35" rx="8"/>
+    
+    <!-- HALO text -->
+    <text x="50" y="25" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" 
+          fill="white" text-anchor="middle">HALO</text>
+    
+    <!-- Pesa background -->
+    <rect x="110" y="0" width="100" height="35" fill="#FF8C42" rx="8"/>
+    
+    <!-- PESA text -->
+    <text x="160" y="25" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" 
+          fill="white" text-anchor="middle">PESA</text>
+  </g>
+  
+  <!-- Halotel tagline -->
+  <g transform="translate(20, 65)">
+    <text x="105" y="0" font-family="Arial, sans-serif" font-size="10" font-weight="normal" 
+          fill="#666" text-anchor="middle">by Halotel - Mobile Financial Services</text>
+  </g>
+  
+  <!-- Halo effect/ring -->
+  <g transform="translate(230, 35)">
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#FF6B35" stroke-width="2" opacity="0.6"/>
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#FF8C42" stroke-width="2" opacity="0.8"/>
+    <circle cx="0" cy="0" r="5" fill="#FFAB73" opacity="0.9"/>
+  </g>
+  
+  <!-- Signal waves representing mobile -->
+  <g transform="translate(10, 35)">
+    <path d="M 0 0 C 3 -2 6 -2 9 0" stroke="#FF6B35" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M 0 -5 C 5 -8 10 -8 15 -5" stroke="#FF8C42" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </g>
+  
+  <!-- Money symbol -->
+  <g transform="translate(260, 15)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="12" fill="#FF6B35" opacity="0.6">Tsh</text>
+  </g>
+</svg>

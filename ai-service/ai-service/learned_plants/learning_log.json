@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2025-08-05T16:02:11.140331",
+    "plant_name": "maize",
+    "image_path": "ai-service/learned_plants/maize_20250805_160203_ef02ca0d.jpg",
+    "original_path": "/home/mosat/smartfarm-tz/server/uploads/crop-health/plant-1754398922872-748871915.jpeg"
+  },
+  {
+    "timestamp": "2025-08-05T20:36:59.285620",
+    "plant_name": "beans",
+    "image_path": "ai-service/learned_plants/beans_20250805_203652_81252add.jpg",
+    "original_path": "/home/mosat/smartfarm-tz/server/uploads/crop-health/plant-1754415411791-462516856.jpeg"
+  }
+]

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Background -->
+  <rect width="400" height="200" fill="white"/>
+  
+  <!-- Giraffe icon -->
+  <g transform="translate(40, 30)">
+    <!-- Giraffe body -->
+    <ellipse cx="25" cy="80" rx="15" ry="35" fill="#FF6B35" transform="rotate(-10)"/>
+    <!-- Giraffe neck -->
+    <path d="M 30 45 Q 35 25 40 10 Q 45 5 50 10 Q 52 15 50 25 Q 45 45 40 65" 
+          fill="#FF6B35"/>
+    <!-- Giraffe head -->
+    <ellipse cx="48" cy="12" rx="8" ry="10" fill="#FF6B35"/>
+    <!-- Spots -->
+    <circle cx="22" cy="75" r="3" fill="#C41E3A"/>
+    <circle cx="30" cy="85" r="2" fill="#C41E3A"/>
+    <circle cx="35" cy="70" r="2.5" fill="#C41E3A"/>
+    <circle cx="42" cy="30" r="2" fill="#C41E3A"/>
+    <circle cx="46" cy="20" r="1.5" fill="#C41E3A"/>
+    <!-- Legs -->
+    <rect x="18" y="108" width="4" height="20" fill="#FF6B35"/>
+    <rect x="30" y="110" width="4" height="18" fill="#FF6B35"/>
+  </g>
+  
+  <!-- Mountain silhouette -->
+  <g transform="translate(80, 60)">
+    <path d="M 0 80 L 15 50 L 25 55 L 35 40 L 50 45 L 65 30 L 80 40 L 90 35 L 100 80 Z" 
+          fill="#2E5C8A"/>
+    <path d="M 10 80 L 20 65 L 30 70 L 45 55 L 60 60 L 75 50 L 85 55 L 95 80 Z" 
+          fill="#4A7BA7" opacity="0.8"/>
+  </g>
+  
+  <!-- NBC text -->
+  <g transform="translate(200, 80)">
+    <text x="0" y="0" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#2E5C8A">NBC</text>
+  </g>
+  
+  <!-- National Bank of Commerce text -->
+  <g transform="translate(50, 140)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="#C41E3A">National Bank of Commerce</text>
+  </g>
+  
+  <!-- Tagline -->
+  <g transform="translate(50, 165)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#2E5C8A" font-style="italic">Conveniently Everywhere.</text>
+  </g>
+</svg>

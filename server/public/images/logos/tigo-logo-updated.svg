@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+  <!-- Background -->
+  <rect width="320" height="120" fill="white"/>
+  
+  <!-- Main Tigo container -->
+  <g transform="translate(20, 20)">
+    <!-- Tigo brand background -->
+    <rect x="0" y="0" width="130" height="45" fill="#00A8E6" rx="8"/>
+    <rect x="2" y="2" width="126" height="41" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" rx="6"/>
+    
+    <!-- TIGO text -->
+    <text x="65" y="32" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" 
+          fill="white" text-anchor="middle">tigo</text>
+  </g>
+  
+  <!-- Pesa container -->
+  <g transform="translate(160, 20)">
+    <!-- Pesa background -->
+    <rect x="0" y="0" width="130" height="45" fill="#0080C7" rx="8"/>
+    <rect x="2" y="2" width="126" height="41" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" rx="6"/>
+    
+    <!-- PESA text -->
+    <text x="65" y="32" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" 
+          fill="white" text-anchor="middle">pesa</text>
+  </g>
+  
+  <!-- Mobile money tagline -->
+  <g transform="translate(20, 75)">
+    <text x="135" y="0" font-family="Arial, sans-serif" font-size="12" font-weight="normal" 
+          fill="#666" text-anchor="middle">Mobile Money Services</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g>
+    <!-- Signal waves -->
+    <g transform="translate(10, 35)">
+      <path d="M 0 0 Q 5 -3 10 0" stroke="#00A8E6" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M 0 5 Q 8 -1 16 5" stroke="#0080C7" stroke-width="2" fill="none" opacity="0.5"/>
+    </g>
+    
+    <!-- Mobile icon -->
+    <g transform="translate(295, 25)">
+      <rect x="0" y="0" width="12" height="20" fill="none" stroke="#00A8E6" stroke-width="2" rx="2"/>
+      <rect x="2" y="3" width="8" height="11" fill="#E6F7FF"/>
+      <circle cx="6" cy="17" r="1" fill="#00A8E6"/>
+    </g>
+  </g>
+  
+  <!-- Connection dots -->
+  <circle cx="150" cy="42.5" r="3" fill="#FFD700"/>
+  <circle cx="160" cy="42.5" r="3" fill="#FFD700"/>
+</svg>

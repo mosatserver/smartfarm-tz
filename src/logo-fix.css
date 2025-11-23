@@ -1,0 +1,42 @@
+/* Logo Display Fix CSS */
+/* This file contains CSS overrides to fix logo display issues */
+
+/* Reset problematic logo styles that might be hiding the image */
+.logo-reset {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Ensure logo images are visible and properly displayed */
+img[alt*="Logo"], 
+img[alt*="logo"],
+img[src*="logo"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Override any problematic CSS that might affect logo containers */
+[class*="logo"]:not(.logo-reset),
+[class*="Logo"]:not(.logo-reset) {
+  /* Remove potentially problematic styles */
+  background: none !important;
+  border: none !important;
+}
+
+/* Specific fix for rounded logo images */
+.rounded-full img {
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+/* Debugging helper - remove in production */
+.logo-debug {
+  border: 2px solid red !important;
+  background-color: yellow !important;
+}

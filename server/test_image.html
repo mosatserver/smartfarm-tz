@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>SmartFarm Image Test</h1>
+    <p>Testing image loading from backend:</p>
+    <img src="http://localhost:5000/uploads/image-1754100337093-628764382.jpg" 
+         alt="Test Image" 
+         style="max-width: 300px; border: 1px solid #ccc;"
+         onload="console.log('Image loaded successfully')"
+         onerror="console.error('Image failed to load')">
+    <p>If you see an image above, the backend is serving images correctly!</p>
+    
+    <script>
+        console.log('Testing image URL: http://localhost:5000/uploads/image-1754100337093-628764382.jpg');
+    </script>
+</body>
+</html>

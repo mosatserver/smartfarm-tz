@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Logo Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .logo-test {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            background: white;
+            text-align: center;
+            min-width: 200px;
+        }
+        .logo-test img {
+            max-width: 180px;
+            max-height: 80px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 5px;
+        }
+        .logo-test h3 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+        .url {
+            font-size: 10px;
+            color: #666;
+            word-break: break-all;
+        }
+        .status {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Simple Logo Display Test</h1>
+    <p><strong>Direct Image Loading Test</strong></p>
+    
+    <div class="test-container">
+        <h2>Your Uploaded Logos</h2>
+        
+        <div class="logo-test">
+            <h3>M-Pesa</h3>
+            <img src="/api/images/logos/mpesa-logo.svg" alt="M-Pesa" 
+                 onload="showStatus(this, 'success')" 
+                 onerror="showStatus(this, 'error')">
+            <div class="url">/api/images/logos/mpesa-logo.svg</div>
+            <div class="status" id="status1">Loading...</div>
+        </div>
+        
+        <div class="logo-test">
+            <h3>Tigo Pesa (New)</h3>
+            <img src="/api/images/logos/tigo-logo-updated.svg" alt="Tigo Pesa" 
+                 onload="showStatus(this, 'success')" 
+                 onerror="showStatus(this, 'error')">
+            <div class="url">/api/images/logos/tigo-logo-updated.svg</div>
+            <div class="status" id="status2">Loading...</div>
+        </div>
+        
+        <div class="logo-test">
+            <h3>CRDB Bank</h3>
+            <img src="/api/images/logos/crdb-logo-updated.svg" alt="CRDB" 
+                 onload="showStatus(this, 'success')" 
+                 onerror="showStatus(this, 'error')">
+            <div class="url">/api/images/logos/crdb-logo-updated.svg</div>
+            <div class="status" id="status3">Loading...</div>
+        </div>
+        
+        <div class="logo-test">
+            <h3>Pesapal</h3>
+            <img src="/api/images/logos/pesapal-logo-enhanced.svg" alt="Pesapal" 
+                 onload="showStatus(this, 'success')" 
+                 onerror="showStatus(this, 'error')">
+            <div class="url">/api/images/logos/pesapal-logo-enhanced.svg</div>
+            <div class="status" id="status4">Loading...</div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Direct URL Test</h2>
+        <p>Click these links to test the logos directly:</p>
+        <ul>
+            <li><a href="/api/images/logos/mpesa-logo.svg" target="_blank">M-Pesa Logo</a></li>
+            <li><a href="/api/images/logos/tigo-logo-updated.svg" target="_blank">Tigo Logo (New)</a></li>
+            <li><a href="/api/images/logos/crdb-logo-updated.svg" target="_blank">CRDB Logo</a></li>
+            <li><a href="/api/images/logos/pesapal-logo-enhanced.svg" target="_blank">Pesapal Logo</a></li>
+        </ul>
+    </div>
+    
+    <div class="test-container">
+        <h2>Browser Info</h2>
+        <div id="browserInfo">Loading browser info...</div>
+    </div>
+    
+    <script>
+        function showStatus(img, status) {
+            const statusDiv = img.nextElementSibling.nextElementSibling;
+            if (status === 'success') {
+                statusDiv.textContent = '✅ Loaded Successfully';
+                statusDiv.className = 'status success';
+            } else {
+                statusDiv.textContent = '❌ Failed to Load';
+                statusDiv.className = 'status error';
+            }
+        }
+        
+        // Show browser info
+        document.getElementById('browserInfo').innerHTML = `
+            <strong>User Agent:</strong> ${navigator.userAgent}<br>
+            <strong>Supports SVG:</strong> ${document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")}<br>
+            <strong>Current URL:</strong> ${window.location.href}<br>
+            <strong>Time:</strong> ${new Date().toISOString()}
+        `;
+        
+        // Test if we can fetch the API
+        fetch('/api/images/logos/mpesa-logo.svg')
+            .then(response => {
+                console.log('API fetch test result:', response.status, response.headers.get('content-type'));
+            })
+            .catch(error => {
+                console.error('API fetch test error:', error);
+            });
+    </script>
+</body>
+</html>

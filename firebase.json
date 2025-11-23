@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "headers": [{
+      "source": "**",
+      "headers": [
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin-allow-popups"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }]
+  }
+}
